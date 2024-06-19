@@ -114,14 +114,24 @@ export const CarouselItem = ({ animation, next, prev, swipe, state, index, maxIn
     else if (index === prevActive)
     {
         animate = isNext ? 'leftwardExit' : 'rightwardExit';
-        if (active === maxIndex && index === 0) animate = 'rightwardExit';
-        if (active === 0 && index === maxIndex) animate = 'leftwardExit'
+        if (maxIndex === 1) {
+            if (active === maxIndex && index === 0) animate = 'leftwardExit';
+            if (active === 0 && index === maxIndex) animate = 'rightwardExit';
+        } else {
+            if (active === maxIndex && index === 0) animate = 'rightwardExit';
+            if (active === 0 && index === maxIndex) animate = 'leftwardExit';
+        }
     }
     else
     {
         animate = index < active ? 'leftOut' : 'rightOut';
-        if (active === maxIndex && index === 0) animate = 'rightOut';
-        if (active === 0 && index === maxIndex) animate = 'leftOut'
+        if (maxIndex === 1) {
+            if (active === maxIndex && index === 0) animate = 'leftOut';
+            if (active === 0 && index === maxIndex) animate = 'rightOut';
+        } else {
+            if (active === maxIndex && index === 0) animate = 'rightOut';
+            if (active === 0 && index === maxIndex) animate = 'leftOut';
+        }
     }
 
     duration = duration / 1000;
